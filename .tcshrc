@@ -1,0 +1,38 @@
+# Revision: e527500ee0c52681dfa8890d7c439659
+# Creation: 28-Nov-2005
+# Modified: 28-Nov-2005 RPR DE2005080059P.1 - added this file
+# TCSHRCVERSION 1  //Do not remove this line
+# TCSHRC2VERSION 1 //Do not remove this line
+# 
+
+if ( $?VULCAN ) then
+   # Set any missing environment variables
+   if ($tcsh == "6.09.00" || $tcsh == "6.15.00") then
+      # Environment variables that did not exist before Vulcan 10
+      # Vulcan 7.0 uses tcsh 6.09.00. Vulcan 7.5-9.x uses tcsh 6.15.00.
+      setenv VULCAN_VERSION_MAJOR 9
+      setenv VULCAN_VERSION_MINOR 9
+      setenv VULCAN_VERSION_SUB 99
+   else
+      # Environment variables that did not exist in early Vulcan 10 builds
+      if ( ! $?VULCAN_VERSION_MAJOR ) then
+         setenv VULCAN_VERSION_MAJOR 10
+      endif
+      if ( ! $?VULCAN_VERSION_MINOR ) then
+         setenv VULCAN_VERSION_MINOR 0
+      endif
+      if ( ! $?VULCAN_VERSION_SUB ) then
+         setenv VULCAN_VERSION_SUB 0
+      endif
+   endif
+
+   if (! $?STARTUP_DONE) then
+      source ~/tcsh_startup.csh
+      setenv STARTUP_DONE 1
+   endif
+
+   if (! $?LOGIN_DONE) then
+      source ~/tcsh_login.csh
+      setenv LOGIN_DONE 1
+   endif
+endif
