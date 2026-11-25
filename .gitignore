@@ -3,3 +3,11 @@
 .RData
 .Rproj.user/
 .anaconda/
+
+# OS metadata
+.DS_Store
+__MACOSX/
+Thumbs.db
+.Rhistory
+.RData
+.Rproj.user/
